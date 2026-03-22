@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background: #101114;
+    --primary-color: #1C1D20;
+    --secondary-color: #4A4D57;
+    --accent-color: #00FFC4;
+    --text-color: #F9F9F9;
+}
+
+html{
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+body{
+    background-color: var(--background);
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    margin: 100px 0 20px 0;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.wrapper{
+    width: 700px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form{
+    position: relative;
+}
+
+#QuickList_input{
+    padding: 12px 20px;
+    width: 100%;
+    background: none;
+    border: solid 2px var(--secondary-color);
+    border-radius: 10px;
+    font: inherit;
+    color: var(--text-color);
+    caret-color: var(--accent-color);
+}
+
+#QuickList-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 0 20px;
+    background-color: var(--accent-color);
+    color: var(--background);
+    border: none;
+    border-radius: 0 10px 10px 0;
+    font-weight: 600;
+    font: inherit;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#QuickList-button:hover{
+    background-color:#00ffc381;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: var(--primary-color);
+    padding: 0 10px;
+    border: solid 2px var(--secondary-color);
+    border-radius: 10px;
+}
+
+.item .texto-item{
+    padding: 15px 0 15px 15px;
+    flex-grow: 1;
+    transition: 0.5s ease;
+}
+
+.botao-deleta{
+    padding: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-deleta svg{
+    transition: 0.5s;
+}
+
+.botao-deleta:hover svg{
+    fill: red;
+}
+
+.checkbox-item{
+    border: solid 2px var(--accent-color);
+    border-radius: 50%;
+    min-height: 20px;
+    min-width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: 0.5s ease;
+    cursor: pointer;
+} 
+
+input[type = "checkbox"]:checked ~ .checkbox-item{ /*Serve para pegar o seletor ".checkbox-item" QUANDO o input tiver marcado*/
+    background-color: var(--accent-color);
+}
+
+input[type = "checkbox"]:checked ~ .checkbox-item svg{
+    fill: var(--text-color);
+}
+
+input[type = "checkbox"]:checked ~ .texto-item{
+    text-decoration: line-through;
+    color: var(--secondary-color);
+}
+
+input[type = "checkbox"]:checked ~ .item{
+    background-color: transparent;
+}
+
+input[type = "checkbox"]{
+    display: none;
+}
+
+input[type = "checkbox"]:not(:checked) ~ .checkbox-item:hover{
+   background-color: var(--secondary-color);
+}
+
+@media(max-width: 500px) {
+    html{
+        font-size: 15px;
+    }
+
+    #QuickList-button{
+        position: unset; /*Volta ao seu valor padrão: static*/
+        width: 100%;
+        padding: 12px 20px;
+        margin-top: 8px;
+        border-radius: 10px;
+    }
+
+    h1{
+        margin-top: 100px;
+        font-size: 2.5rem;
+    }
+}
